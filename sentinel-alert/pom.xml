@@ -11,6 +11,13 @@
     </parent>
 
     <artifactId>sentinel-alert</artifactId>
-    <packaging>jar</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.sentinel</groupId>
+            <artifactId>sentinel-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>

@@ -1,0 +1,7 @@
+openapi: 3.1.0
+info:
+  title: Sentinel AI API
+  version: 1.0.0
+  description: Minimal placeholder for Week 1 Day 1
+
+paths: {}
