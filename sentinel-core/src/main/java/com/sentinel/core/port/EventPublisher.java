@@ -1,5 +1,7 @@
 package com.sentinel.core.port;
 
-public interface EventPublisher {
+import com.sentinel.core.model.AgentEvent;
 
+public interface EventPublisher {
+    public void publish(AgentEvent event);
 }

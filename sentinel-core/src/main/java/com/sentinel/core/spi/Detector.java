@@ -1,5 +1,9 @@
 package com.sentinel.core.spi;
 
-public interface Detector {
+import com.sentinel.core.model.ThreatCategory;
 
+public sealed interface Detector permits EventBasedDetector, WindowBasedDetector {
+    public String name();
+
+    public ThreatCategory category();
 }

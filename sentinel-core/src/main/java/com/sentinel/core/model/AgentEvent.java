@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public record AgentEvent(
         UUID eventId,
-        UUID agentId,
+        String agentId,
         String agentName,
         EventType eventType,
         String inputPayload,

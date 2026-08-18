@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
 public class AgentEventTest {
 
     private UUID eventId = UUID.randomUUID();
-    private UUID agentId = UUID.randomUUID();
+    private String agentId = UUID.randomUUID().toString();
     private String agentName = "TestAgent";
     private AgentEvent.EventType eventType = AgentEvent.EventType.LLM_CALL;
     private String inputPayload = "inputPayload";
@@ -56,7 +56,6 @@ public class AgentEventTest {
         assertNotNull(agentEvent.eventType());
         assertNotNull(agentEvent.timestamp());
     }
-
 
     @Test
     @DisplayName("Should support all EventType enum values")
@@ -242,7 +241,7 @@ public class AgentEventTest {
     void testRecordIsImmutable() {
         // Create an AgentEvent with specific values
         UUID testEventId = UUID.randomUUID();
-        UUID testAgentId = UUID.randomUUID();
+        String testAgentId = UUID.randomUUID().toString();
         String testAgentName = "ImmutableAgent";
         AgentEvent.EventType testEventType = AgentEvent.EventType.LLM_CALL;
         String testInputPayload = "immutableInput";
@@ -302,7 +301,7 @@ public class AgentEventTest {
     @Test
     @DisplayName("Should distinguish events with different agentIds")
     void testDifferentAgentIds() {
-        UUID agentId2 = UUID.randomUUID();
+        String agentId2 = UUID.randomUUID().toString();
         AgentEvent event1 = new AgentEvent(
                 eventId, agentId, agentName, eventType,
                 inputPayload, outputPayload,
@@ -323,34 +322,34 @@ public class AgentEventTest {
     @Test
     void testNullEventId() {
         assertThrows(NullPointerException.class,
-    () -> new AgentEvent(
-                null, agentId, agentName, eventType,
-                inputPayload, outputPayload,
-                inputTokens, outputTokens, totalTokens,
-                latencyMs, modelUsed, sourceIp,
-                metadata, timestamp));
+                () -> new AgentEvent(
+                        null, agentId, agentName, eventType,
+                        inputPayload, outputPayload,
+                        inputTokens, outputTokens, totalTokens,
+                        latencyMs, modelUsed, sourceIp,
+                        metadata, timestamp));
     }
 
     @Test
     void testNullEventType() {
         assertThrows(NullPointerException.class,
-    () -> new AgentEvent(
-                eventId, agentId, agentName, null,
-                inputPayload, outputPayload,
-                inputTokens, outputTokens, totalTokens,
-                latencyMs, modelUsed, sourceIp,
-                metadata, timestamp));
+                () -> new AgentEvent(
+                        eventId, agentId, agentName, null,
+                        inputPayload, outputPayload,
+                        inputTokens, outputTokens, totalTokens,
+                        latencyMs, modelUsed, sourceIp,
+                        metadata, timestamp));
     }
 
     @Test
     void testNullTimeStamp() {
         assertThrows(NullPointerException.class,
-    () -> new AgentEvent(
-                eventId, agentId, agentName, AgentEvent.EventType.AGENT_TO_AGENT,
-                inputPayload, outputPayload,
-                inputTokens, outputTokens, totalTokens,
-                latencyMs, modelUsed, sourceIp,
-                metadata, null));
+                () -> new AgentEvent(
+                        eventId, agentId, agentName, AgentEvent.EventType.AGENT_TO_AGENT,
+                        inputPayload, outputPayload,
+                        inputTokens, outputTokens, totalTokens,
+                        latencyMs, modelUsed, sourceIp,
+                        metadata, null));
     }
 
 }
